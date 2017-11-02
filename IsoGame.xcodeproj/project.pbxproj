@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52F3B9D71FA64D5B002A0981 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52F3B9D61FA64D5B002A0981 /* BearImages.atlas */; };
-		52F3B9DA1FA67683002A0981 /* pig.json in Resources */ = {isa = PBXBuildFile; fileRef = 52F3B9D81FA67683002A0981 /* pig.json */; };
-		52F3B9DB1FA67683002A0981 /* pig.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F3B9D91FA67683002A0981 /* pig.png */; };
+		5207C2EE1FABC15D00EE1154 /* max.json in Resources */ = {isa = PBXBuildFile; fileRef = 5207C2EC1FABC15D00EE1154 /* max.json */; };
+		5207C2EF1FABC15D00EE1154 /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 5207C2ED1FABC15D00EE1154 /* max.png */; };
+		523A1E251FA7AE9300A9750B /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523A1E241FA7AE9300A9750B /* TextureLoader.swift */; };
+		523A1E2B1FA7CC2700A9750B /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523A1E2A1FA7CC2700A9750B /* Tile.swift */; };
+		523E67511FAA73400038E410 /* Projections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E67501FAA73400038E410 /* Projections.swift */; };
 		550ADBE21A68E68F007B858A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE11A68E68F007B858A /* AppDelegate.swift */; };
 		550ADBE61A68E68F007B858A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE51A68E68F007B858A /* GameScene.swift */; };
 		550ADBE81A68E68F007B858A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE71A68E68F007B858A /* GameViewController.swift */; };
@@ -17,7 +19,6 @@
 		550ADBED1A68E690007B858A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550ADBEC1A68E690007B858A /* Images.xcassets */; };
 		550ADBF01A68E690007B858A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550ADBEE1A68E690007B858A /* LaunchScreen.xib */; };
 		550ADBFC1A68E690007B858A /* IsoGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBFB1A68E690007B858A /* IsoGameTests.swift */; };
-		55431E481A9C3EF300AC251C /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55431E471A9C3EF300AC251C /* Texture.swift */; };
 		55D12AD61A71D9D000A690E9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55D12AD51A71D9D000A690E9 /* sprites.atlas */; };
 		55EB01731A9DA3DE006C00AB /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB01721A9DA3DE006C00AB /* Character.swift */; };
 /* End PBXBuildFile section */
@@ -33,9 +34,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		52F3B9D61FA64D5B002A0981 /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
-		52F3B9D81FA67683002A0981 /* pig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pig.json; sourceTree = "<group>"; };
-		52F3B9D91FA67683002A0981 /* pig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pig.png; sourceTree = "<group>"; };
+		5207C2EC1FABC15D00EE1154 /* max.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max.json; sourceTree = "<group>"; };
+		5207C2ED1FABC15D00EE1154 /* max.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = max.png; sourceTree = "<group>"; };
+		523A1E241FA7AE9300A9750B /* TextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureLoader.swift; sourceTree = "<group>"; };
+		523A1E2A1FA7CC2700A9750B /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		523E67501FAA73400038E410 /* Projections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projections.swift; sourceTree = "<group>"; };
 		550ADBDC1A68E68F007B858A /* IsoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IsoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		550ADBE01A68E68F007B858A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		550ADBE11A68E68F007B858A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +50,6 @@
 		550ADBF51A68E690007B858A /* IsoGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IsoGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		550ADBFA1A68E690007B858A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		550ADBFB1A68E690007B858A /* IsoGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsoGameTests.swift; sourceTree = "<group>"; };
-		55431E471A9C3EF300AC251C /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		55D12AD51A71D9D000A690E9 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		55EB01721A9DA3DE006C00AB /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,13 +93,14 @@
 		550ADBDE1A68E68F007B858A /* IsoGame */ = {
 			isa = PBXGroup;
 			children = (
+				523E67501FAA73400038E410 /* Projections.swift */,
+				523A1E2A1FA7CC2700A9750B /* Tile.swift */,
+				523A1E241FA7AE9300A9750B /* TextureLoader.swift */,
 				550ADBE11A68E68F007B858A /* AppDelegate.swift */,
 				550ADBE51A68E68F007B858A /* GameScene.swift */,
 				55EB01721A9DA3DE006C00AB /* Character.swift */,
-				55431E471A9C3EF300AC251C /* Texture.swift */,
 				550ADBE71A68E68F007B858A /* GameViewController.swift */,
 				550ADBEC1A68E690007B858A /* Images.xcassets */,
-				52F3B9D61FA64D5B002A0981 /* BearImages.atlas */,
 				55D12AD51A71D9D000A690E9 /* sprites.atlas */,
 				550ADBE91A68E68F007B858A /* Main.storyboard */,
 				550ADBEE1A68E690007B858A /* LaunchScreen.xib */,
@@ -109,8 +112,8 @@
 		550ADBDF1A68E68F007B858A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				52F3B9D81FA67683002A0981 /* pig.json */,
-				52F3B9D91FA67683002A0981 /* pig.png */,
+				5207C2EC1FABC15D00EE1154 /* max.json */,
+				5207C2ED1FABC15D00EE1154 /* max.png */,
 				550ADBE01A68E68F007B858A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -177,7 +180,7 @@
 		550ADBD41A68E68F007B858A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Big Sprite Games";
 				TargetAttributes = {
 					550ADBDB1A68E68F007B858A = {
@@ -216,12 +219,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5207C2EF1FABC15D00EE1154 /* max.png in Resources */,
 				550ADBF01A68E690007B858A /* LaunchScreen.xib in Resources */,
 				550ADBED1A68E690007B858A /* Images.xcassets in Resources */,
-				52F3B9DA1FA67683002A0981 /* pig.json in Resources */,
-				52F3B9DB1FA67683002A0981 /* pig.png in Resources */,
-				52F3B9D71FA64D5B002A0981 /* BearImages.atlas in Resources */,
 				55D12AD61A71D9D000A690E9 /* sprites.atlas in Resources */,
+				5207C2EE1FABC15D00EE1154 /* max.json in Resources */,
 				550ADBEB1A68E68F007B858A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,9 +243,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				550ADBE61A68E68F007B858A /* GameScene.swift in Sources */,
-				55431E481A9C3EF300AC251C /* Texture.swift in Sources */,
+				523A1E251FA7AE9300A9750B /* TextureLoader.swift in Sources */,
 				55EB01731A9DA3DE006C00AB /* Character.swift in Sources */,
+				523A1E2B1FA7CC2700A9750B /* Tile.swift in Sources */,
 				550ADBE81A68E68F007B858A /* GameViewController.swift in Sources */,
+				523E67511FAA73400038E410 /* Projections.swift in Sources */,
 				550ADBE21A68E68F007B858A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,15 +303,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -341,8 +349,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -350,6 +360,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -359,6 +370,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -371,6 +383,7 @@
 				INFOPLIST_FILE = IsoGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bigspritegames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -384,6 +397,7 @@
 				INFOPLIST_FILE = IsoGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bigspritegames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -403,6 +417,7 @@
 				);
 				INFOPLIST_FILE = IsoGameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bigspritegames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IsoGame.app/IsoGame";
@@ -419,6 +434,7 @@
 				);
 				INFOPLIST_FILE = IsoGameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bigspritegames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IsoGame.app/IsoGame";
