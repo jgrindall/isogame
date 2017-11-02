@@ -43,27 +43,21 @@ func ceil(_ point:CGPoint) -> CGPoint {
 }
 
 class Projections {
-	static func point2DToIso(_ p:CGPoint) -> CGPoint {
-		var point = p * CGPoint(x:1, y:-1)
-		point = CGPoint(x:(point.x - point.y), y: ((point.x + point.y) / 2))
-		point = point * CGPoint(x:1, y:-1)
-		return point
+	static func cartToIso(_ p:CGPoint) -> CGPoint {
+		return CGPoint(x:(p.x - p.y), y: ((p.x + p.y) / 2))
 	}
-	static func pointIsoTo2D(_ p:CGPoint) -> CGPoint {
-		var point = p * CGPoint(x:1, y:-1)
-		point = CGPoint(x:((2 * point.y + point.x) / 2), y: ((2 * point.y - point.x) / 2))
-		point = point * CGPoint(x:1, y:-1)
-		return point
+	static func isoToCart(_ p:CGPoint) -> CGPoint {
+		return CGPoint(x:((2 * p.y + p.x) / 2), y: ((2 * p.y - p.x) / 2))
 	}
 	static func sortDepth(nodes:[SKNode]){
 		func isInFront(n0:SKNode, n1:SKNode) -> Bool{
-			let p0 = Projections.pointIsoTo2D(n0.position)
-			let p1 = Projections.pointIsoTo2D(n1.position)
+			let p0 = Projections.isoToCart(n0.position)
+			let p1 = Projections.isoToCart(n1.position)
 			return (p0.x - p0.y < p1.x - p1.y);
 		}
 		let sortedNodes = nodes.sorted(by: isInFront)
 		for i in 0..<nodes.count {
-			(sortedNodes[i]).zPosition = CGFloat(i)
+			(sortedNodes[i]).zPosition = 100 + CGFloat(i)
 		}
 	}
 }

@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Big Sprite Games. All rights reserved.
 //
 
+//https://mazebert.com/2013/04/18/isometric-depth-sorting/
+
 import UIKit
 import SpriteKit
 
@@ -23,7 +25,7 @@ class GameScene: SKScene {
     let nthFrame = 6
     var nthFrameCount = 0
 	var SIZE = 6
-	var data:[[Int]] = [[2, 2, 3], [1, 0, 0], [4, 4, 1], [3, 0, 2]]
+	var data:[[Int]] = [[2, 2, 3], [1, 0, 0], [4, 4, 1], [3, 0, 2], [-1, -1, 1], [0, 0, 2]]
 	
     override init(size: CGSize) {
 		textures = []
@@ -47,7 +49,7 @@ class GameScene: SKScene {
     }
 	
 	func posGround(sprite:SKSpriteNode, position:CGPoint) {
-		sprite.position = Projections.point2DToIso(position)
+		sprite.position = Projections.cartToIso(position)
 	}
 	
 	func makeCharacter() {
@@ -97,9 +99,15 @@ class GameScene: SKScene {
 	
 	override func update(_ currentTime: TimeInterval) {
 		nthFrameCount += 1
-		if (nthFrameCount == nthFrame) {
-			nthFrameCount = 0
+		objectsLayer.children[0].position.x += 0.1;
+		objectsLayer.children[1].position.y += 0.1;
+		objectsLayer.children[2].position.x += 0.05;
+		objectsLayer.children[2].position.y -= 0.1;
+		if (nthFrameCount % nthFrame == 0) {
 			sortDepth()
+		}
+		if(nthFrameCount == 200){
+			(objectsLayer.children[2] as! SKSpriteNode).texture = textures[5];
 		}
 	}
 }
