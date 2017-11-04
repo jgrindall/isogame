@@ -17,97 +17,82 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
 	
-	var textures : [SKTexture]
+	var textures : [String: SKTexture]
 	var viewIso:SKSpriteNode
     var groundLayer:SKNode
     var objectsLayer:SKNode
-    let tileSize = (width:32.0, height:32.0)
+    let TILESIZE = 64
     let nthFrame = 6
     var nthFrameCount = 0
+	var floorHeight:CGFloat = 0.25
 	var SIZE = 6
-	var data:[[Int]] = [[2, 2, 3], [1, 0, 0], [4, 4, 1], [3, 0, 2], [-1, -1, 1], [0, 0, 2]]
+	var data:[[Int]] = [[0, 0, 90]]
 	
     override init(size: CGSize) {
-		textures = []
+		textures = [String: SKTexture]()
 		viewIso = SKSpriteNode()
         groundLayer = SKNode()
         objectsLayer = SKNode()
 		super.init(size: size)
-		self.anchorPoint = CGPoint(x:0.5, y:0.5)
-    }
+	}
 	
     override func didMove(to view: SKView) {
 		textures = TextureLoader.load(imgName:"max", jsonName:"max")
-		print(textures)
 		viewIso.position = CGPoint(x:0, y:0)
         viewIso.addChild(groundLayer)
         viewIso.addChild(objectsLayer)
         addChild(viewIso)
-		makeGround();
-		makeCharacter();
-		makeCharacters();
+		Projections.setup(tileSize: CGFloat(TILESIZE), size: CGFloat(SIZE))
+		makeGround()
+		makeCharacters()
     }
 	
-	func posGround(sprite:SKSpriteNode, position:CGPoint) {
-		sprite.position = Projections.cartToIso(position)
-	}
-	
-	func makeCharacter() {
-		var point:CGPoint
-		var tileSprite:SKSpriteNode
-		point = getXYPos(x: 2.0, y: 2.0)
-		tileSprite = SKSpriteNode(texture: textures[0])
-		//tileSprite.anchorPoint = CGPoint(x:0, y:0)
-		posGround(sprite:tileSprite, position:point);
-		objectsLayer.addChild(tileSprite)
-	}
-	
 	func makeCharacters() {
-		var point:CGPoint
 		var tileSprite:SKSpriteNode
+		let tileSizeFloat = CGFloat(TILESIZE);
+		let origin:CGPoint = CGPoint(x:(self.view?.frame.width)!/2, y:(self.view?.frame.height)!/2)
 		for a in data{
-			print(a);
-			point = getXYPos(x: Double(a[0]), y: Double(a[1]))
-			tileSprite = SKSpriteNode(texture: textures[a[2]])
-			//tileSprite.anchorPoint = CGPoint(x:0, y:0)
-			posGround(sprite:tileSprite, position:point);
+			var iso:CGPoint = Projections.cartToIso(p:CGPoint(x:a[0], y:a[1]))
+			iso = iso + origin
+			let name:String = "out" + String(a[2]) + ".png"
+			tileSprite = SKSpriteNode(texture: textures[name])
+			tileSprite.anchorPoint = CGPoint(x:0, y:0)
+			tileSprite.position = CGPoint(x:iso.x - tileSizeFloat/2.0, y:iso.y - tileSizeFloat*floorHeight)
 			objectsLayer.addChild(tileSprite)
 		}
 	}
 	
-	func getXYPos(x:Double, y:Double) -> CGPoint {
-		return CGPoint(x: x, y: y) * CGPoint(x:tileSize.width, y:tileSize.height)
-	}
-	
 	func makeGround() {
-		var point:CGPoint
+		let tileSizeFloat = CGFloat(TILESIZE);
+		let origin:CGPoint = CGPoint(x:(self.view?.frame.width)!/2, y:(self.view?.frame.height)!/2)
 		var tileSprite:SKSpriteNode
-		for i in 0..<SIZE {
-			for j in 0..<SIZE {
-				point = getXYPos(x: Double(j), y: Double(i))
+		for j in stride(from: SIZE - 1, through: 0, by: -1) {
+			for i in stride(from: SIZE - 1, through: 0, by: -1) {
 				tileSprite = SKSpriteNode(imageNamed: "iso_ground.png")
 				tileSprite.anchorPoint = CGPoint(x:0, y:0)
-				posGround(sprite:tileSprite, position:point)
+				var iso:CGPoint = Projections.cartToIso(p:CGPoint(x:CGFloat(i), y:CGFloat(j)))
+				iso = iso + origin
+				tileSprite.position = CGPoint(x:iso.x - tileSizeFloat/2.0, y:iso.y - tileSizeFloat*floorHeight)
 				groundLayer.addChild(tileSprite)
 			}
 		}
 	}
 	
 	func sortDepth() {
-		Projections.sortDepth(nodes: objectsLayer.children);
+		Projections.sortDepth(nodes: objectsLayer.children, min:groundLayer.children.count);
 	}
 	
 	override func update(_ currentTime: TimeInterval) {
 		nthFrameCount += 1
-		objectsLayer.children[0].position.x += 0.1;
-		objectsLayer.children[1].position.y += 0.1;
-		objectsLayer.children[2].position.x += 0.05;
-		objectsLayer.children[2].position.y -= 0.1;
+		//objectsLayer.children[0].position.x += 0.1;
+		//objectsLayer.children[1].position.y += 0.1;
+		//objectsLayer.children[2].position.x += 0.05;
+		//objectsLayer.children[2].position.y -= 0.1;
 		if (nthFrameCount % nthFrame == 0) {
 			sortDepth()
 		}
 		if(nthFrameCount == 200){
-			(objectsLayer.children[2] as! SKSpriteNode).texture = textures[5];
+			//(objectsLayer.children[2] as! SKSpriteNode).texture = textures[5];
 		}
 	}
 }

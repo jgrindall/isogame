@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5207C2EE1FABC15D00EE1154 /* max.json in Resources */ = {isa = PBXBuildFile; fileRef = 5207C2EC1FABC15D00EE1154 /* max.json */; };
-		5207C2EF1FABC15D00EE1154 /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 5207C2ED1FABC15D00EE1154 /* max.png */; };
 		523A1E251FA7AE9300A9750B /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523A1E241FA7AE9300A9750B /* TextureLoader.swift */; };
 		523A1E2B1FA7CC2700A9750B /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523A1E2A1FA7CC2700A9750B /* Tile.swift */; };
 		523E67511FAA73400038E410 /* Projections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E67501FAA73400038E410 /* Projections.swift */; };
+		529940A61FAE172200F197BC /* max.json in Resources */ = {isa = PBXBuildFile; fileRef = 529940A41FAE172200F197BC /* max.json */; };
+		529940A91FAE1A9500F197BC /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 529940A81FAE1A9500F197BC /* max.png */; };
 		550ADBE21A68E68F007B858A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE11A68E68F007B858A /* AppDelegate.swift */; };
 		550ADBE61A68E68F007B858A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE51A68E68F007B858A /* GameScene.swift */; };
 		550ADBE81A68E68F007B858A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE71A68E68F007B858A /* GameViewController.swift */; };
@@ -34,11 +34,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5207C2EC1FABC15D00EE1154 /* max.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max.json; sourceTree = "<group>"; };
-		5207C2ED1FABC15D00EE1154 /* max.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = max.png; sourceTree = "<group>"; };
 		523A1E241FA7AE9300A9750B /* TextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureLoader.swift; sourceTree = "<group>"; };
 		523A1E2A1FA7CC2700A9750B /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		523E67501FAA73400038E410 /* Projections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projections.swift; sourceTree = "<group>"; };
+		529940A41FAE172200F197BC /* max.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max.json; sourceTree = "<group>"; };
+		529940A81FAE1A9500F197BC /* max.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = max.png; sourceTree = "<group>"; };
 		550ADBDC1A68E68F007B858A /* IsoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IsoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		550ADBE01A68E68F007B858A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		550ADBE11A68E68F007B858A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,8 +112,8 @@
 		550ADBDF1A68E68F007B858A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5207C2EC1FABC15D00EE1154 /* max.json */,
-				5207C2ED1FABC15D00EE1154 /* max.png */,
+				529940A41FAE172200F197BC /* max.json */,
+				529940A81FAE1A9500F197BC /* max.png */,
 				550ADBE01A68E68F007B858A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -219,11 +219,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5207C2EF1FABC15D00EE1154 /* max.png in Resources */,
+				529940A91FAE1A9500F197BC /* max.png in Resources */,
 				550ADBF01A68E690007B858A /* LaunchScreen.xib in Resources */,
 				550ADBED1A68E690007B858A /* Images.xcassets in Resources */,
 				55D12AD61A71D9D000A690E9 /* sprites.atlas in Resources */,
-				5207C2EE1FABC15D00EE1154 /* max.json in Resources */,
+				529940A61FAE172200F197BC /* max.json in Resources */,
 				550ADBEB1A68E68F007B858A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

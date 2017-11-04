@@ -12,8 +12,8 @@ import SpriteKit
 
 class TextureLoader {
 	
-	static func load(imgName:String, jsonName:String) -> [SKTexture]{
-		var textures:[SKTexture] = []
+	static func load(imgName:String, jsonName:String) -> [String: SKTexture]{
+		var textures = [String: SKTexture]()
 		let imgPath = Bundle.main.path(forResource: imgName, ofType: "png")
 		let jsonPath = Bundle.main.path(forResource: jsonName, ofType: "json")
 		let sourceTexture = SKTexture(image: UIImage(contentsOfFile: imgPath!)!)
@@ -25,13 +25,21 @@ class TextureLoader {
 			let fullWidth = meta?["width"] as? Float
 			let fullHeight = meta?["height"] as? Float
 			var frameData:[String: Any]
+			var name:String
 			var x, y, w, h: Float
 			var xScaled, yScaled, wScaled, hScaled: CGFloat
 			var texture: SKTexture
 			for frame in frames! {
+				name = frame["filename"] as! String
 				frameData = frame["frame"] as! [String: Any]
-				x = -1.0 * (frameData["x"] as? Float)!
-				y = -1.0 * (frameData["y"] as? Float)!
+				x = (frameData["x"] as? Float)!
+				if(x < 0){
+					x = -1.0 * x
+				}
+				y = (frameData["y"] as? Float)!
+				if(y < 0){
+					y = -1.0 * y
+				}
 				w = (frameData["w"] as? Float)!
 				h = (frameData["h"] as? Float)!
 				xScaled = CGFloat(x/fullWidth!)
@@ -39,7 +47,8 @@ class TextureLoader {
 				wScaled = CGFloat(w/fullWidth!)
 				hScaled = CGFloat(h/fullHeight!)
 				texture = SKTexture(rect: CGRect(x: xScaled, y: yScaled, width: wScaled, height: hScaled), in: sourceTexture)
-				textures.append(texture)
+				print(name, xScaled, yScaled, wScaled, hScaled)
+				textures[name] = texture
 			}
 		}
 		catch {
