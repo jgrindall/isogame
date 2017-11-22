@@ -8,7 +8,7 @@ import UIKit
 class CodeRunner : NSObject, PCodeRunner {
 
 	private var context: JSContext!
-	private let serialQueue = DispatchQueue(label: "codeRunnerSerialQueue" + UUID().uuidString)
+	let serialQueue = DispatchQueue(label: "codeRunnerSerialQueue" + UUID().uuidString)
 	private var _consumer:PCodeConsumer!
 	
 	enum CodeRunnerError : Error {
@@ -43,6 +43,12 @@ class CodeRunner : NSObject, PCodeRunner {
 		}
 	}
 	
+	@objc func callJsCallback(timer:Timer){
+		let val:JSValue = timer.userInfo as! JSValue
+		print(val)
+		val.call(withArguments: []);
+	}
+	
 	private func _makeContext(fileNames:[String]){
 		self.context = JSContext(virtualMachine: JSVirtualMachine());
 		let consoleLog: @convention(block) (String) -> Void = { message in
@@ -50,8 +56,21 @@ class CodeRunner : NSObject, PCodeRunner {
 		}
 		self.context.exceptionHandler = { context, exception in
 			print("error: \(String(describing: exception))")
-		};
+		}
+		let iosSetTimeout: @convention(block) (JSValue, TimeInterval) -> Void = { callback, timeInterval in
+			print(callback, timeInterval)
+			self.serialQueue.async{
+				print("schedule", callback, timeInterval)
+				let _ = Timer.scheduledTimer(timeInterval: timeInterval/1000.0, target: self, selector: #selector(self.callJsCallback), userInfo: callback, repeats: false)
+			}
+		}
 		self.context.globalObject.setObject(unsafeBitCast(consoleLog, to: AnyObject.self), forKeyedSubscript: "consoleLog" as (NSCopying & NSObjectProtocol)!)
+		self.context.globalObject.setObject(unsafeBitCast(iosSetTimeout, to: AnyObject.self), forKeyedSubscript: "iosSetTimeout" as (NSCopying & NSObjectProtocol))
+		self.context.evaluateScript(
+			"function setTimeout(callback, ms) {" +
+			"return iosSetTimeout(callback, ms)" +
+			"}"
+		)
 	}
 	
 	private func _bindConsumer(){

@@ -25,7 +25,7 @@ class GameScene: SKScene, PCodeConsumer  {
 		viewIso = SKSpriteNode()
         groundLayer = SKNode()
         objectsLayer = SKNode()
-		codeRunner = CodeRunner(fileNames: ["index"])
+		codeRunner = CodeRunner(fileNames: ["Logo", "index"])
 		super.init(size: size)
 	}
 	

@@ -19,6 +19,7 @@
 		52F72C1D1FC60FB000F74C66 /* PCodeConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F72C1A1FC60FB000F74C66 /* PCodeConsumer.swift */; };
 		52F72C1E1FC60FB000F74C66 /* PCodeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F72C1B1FC60FB000F74C66 /* PCodeRunner.swift */; };
 		52F72C211FC6128200F74C66 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 52F72C201FC6128200F74C66 /* index.js */; };
+		52F72C241FC61B8800F74C66 /* Logo.js in Resources */ = {isa = PBXBuildFile; fileRef = 52F72C221FC61B8800F74C66 /* Logo.js */; };
 		550ADBE21A68E68F007B858A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE11A68E68F007B858A /* AppDelegate.swift */; };
 		550ADBED1A68E690007B858A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550ADBEC1A68E690007B858A /* Images.xcassets */; };
 		550ADBF01A68E690007B858A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550ADBEE1A68E690007B858A /* LaunchScreen.xib */; };
@@ -49,6 +50,7 @@
 		52F72C1A1FC60FB000F74C66 /* PCodeConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCodeConsumer.swift; sourceTree = "<group>"; };
 		52F72C1B1FC60FB000F74C66 /* PCodeRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCodeRunner.swift; sourceTree = "<group>"; };
 		52F72C201FC6128200F74C66 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		52F72C221FC61B8800F74C66 /* Logo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Logo.js; sourceTree = "<group>"; };
 		550ADBDC1A68E68F007B858A /* IsoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IsoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		550ADBE01A68E68F007B858A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		550ADBE11A68E68F007B858A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		52F72C1F1FC6123600F74C66 /* js */ = {
 			isa = PBXGroup;
 			children = (
+				52F72C221FC61B8800F74C66 /* Logo.js */,
 				52F72C201FC6128200F74C66 /* index.js */,
 			);
 			path = js;
@@ -278,6 +281,7 @@
 			files = (
 				529940AF1FAE2BA100F197BC /* max.png in Resources */,
 				550ADBF01A68E690007B858A /* LaunchScreen.xib in Resources */,
+				52F72C241FC61B8800F74C66 /* Logo.js in Resources */,
 				550ADBED1A68E690007B858A /* Images.xcassets in Resources */,
 				52F72C211FC6128200F74C66 /* index.js in Resources */,
 				55D12AD61A71D9D000A690E9 /* sprites.atlas in Resources */,
