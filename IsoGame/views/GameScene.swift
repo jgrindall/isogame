@@ -1,23 +1,15 @@
-//
-//  GameViewController.swift
-//  IsoGame
-//
-//  Created by Dave Longbottom on 16/01/2015.
-//  Copyright (c) 2015 Big Sprite Games. All rights reserved.
-//
-
-//https://mazebert.com/2013/04/18/isometric-depth-sorting/
 
 import UIKit
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, PCodeConsumer  {
 	
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 	
 	var textures : [String: SKTexture]
+	var codeRunner:PCodeRunner
 	var viewIso:SKSpriteNode
     var groundLayer:SKNode
     var objectsLayer:SKNode
@@ -26,18 +18,19 @@ class GameScene: SKScene {
     var nthFrameCount = 0
 	var floorHeight:CGFloat = 0.25
 	var SIZE = 6
-	var data:[[Int]] = [[0, 0, 90]]
+	var data:[[Float]] = [[0, 0, 1], [4, 4, 12]]
 	
     override init(size: CGSize) {
 		textures = [String: SKTexture]()
 		viewIso = SKSpriteNode()
         groundLayer = SKNode()
         objectsLayer = SKNode()
+		codeRunner = CodeRunner(fileNames: ["index"])
 		super.init(size: size)
 	}
 	
     override func didMove(to view: SKView) {
-		textures = TextureLoader.load(imgName:"max", jsonName:"max")
+		TextureLoader.load(imgName:"max", jsonName:"max", textures:&textures)
 		viewIso.position = CGPoint(x:0, y:0)
         viewIso.addChild(groundLayer)
         viewIso.addChild(objectsLayer)
@@ -45,34 +38,53 @@ class GameScene: SKScene {
 		Projections.setup(tileSize: CGFloat(TILESIZE), size: CGFloat(SIZE))
 		makeGround()
 		makeCharacters()
+		setupJS()
     }
+	
+	func setupJS(){
+		codeRunner.setConsumer(consumer: self);
+		codeRunner.run(fnName: "check", arg: "a")
+	}
+	
+	func consume(type: String, data: String) {
+		//?
+	}
+	
+	func getPosForTile(cartPos:CGPoint) -> CGPoint{
+		let tileSizeFloat = CGFloat(TILESIZE);
+		let origin:CGPoint = CGPoint(x:(self.view?.frame.width)!/2, y:(self.view?.frame.height)!/2)
+		var iso:CGPoint = Projections.cartToIso(p:cartPos)
+		iso = iso + origin
+		iso = iso + CGPoint(x: -tileSizeFloat/2.0, y: -tileSizeFloat*floorHeight)
+		return iso
+	}
+	
+	func posTile(tileSprite:SKSpriteNode, cartPos:CGPoint){
+		tileSprite.position = getPosForTile(cartPos: cartPos)
+	}
+	
+	func makeTile(name:String)-> SKSpriteNode{
+		let tileSprite = SKSpriteNode(texture: textures[name])
+		tileSprite.anchorPoint = CGPoint(x:0, y:0)
+		return tileSprite
+	}
 	
 	func makeCharacters() {
 		var tileSprite:SKSpriteNode
-		let tileSizeFloat = CGFloat(TILESIZE);
-		let origin:CGPoint = CGPoint(x:(self.view?.frame.width)!/2, y:(self.view?.frame.height)!/2)
 		for a in data{
-			var iso:CGPoint = Projections.cartToIso(p:CGPoint(x:a[0], y:a[1]))
-			iso = iso + origin
-			let name:String = "out" + String(a[2]) + ".png"
-			tileSprite = SKSpriteNode(texture: textures[name])
-			tileSprite.anchorPoint = CGPoint(x:0, y:0)
-			tileSprite.position = CGPoint(x:iso.x - tileSizeFloat/2.0, y:iso.y - tileSizeFloat*floorHeight)
+			tileSprite = makeTile(name: "out" + String(Int(a[2])) + ".png")
+			posTile(tileSprite: tileSprite, cartPos: CGPointFromArray(a: a))
 			objectsLayer.addChild(tileSprite)
 		}
 	}
 	
 	func makeGround() {
-		let tileSizeFloat = CGFloat(TILESIZE);
-		let origin:CGPoint = CGPoint(x:(self.view?.frame.width)!/2, y:(self.view?.frame.height)!/2)
 		var tileSprite:SKSpriteNode
 		for j in stride(from: SIZE - 1, through: 0, by: -1) {
 			for i in stride(from: SIZE - 1, through: 0, by: -1) {
 				tileSprite = SKSpriteNode(imageNamed: "iso_ground.png")
 				tileSprite.anchorPoint = CGPoint(x:0, y:0)
-				var iso:CGPoint = Projections.cartToIso(p:CGPoint(x:CGFloat(i), y:CGFloat(j)))
-				iso = iso + origin
-				tileSprite.position = CGPoint(x:iso.x - tileSizeFloat/2.0, y:iso.y - tileSizeFloat*floorHeight)
+				posTile(tileSprite: tileSprite, cartPos: CGPoint(x:CGFloat(i), y:CGFloat(j)))
 				groundLayer.addChild(tileSprite)
 			}
 		}
@@ -82,12 +94,14 @@ class GameScene: SKScene {
 		Projections.sortDepth(nodes: objectsLayer.children, min:groundLayer.children.count);
 	}
 	
+	func updatePos(){
+		data[0][0] = data[0][0] + 0.0025
+		posTile(tileSprite: objectsLayer.children[0] as! SKSpriteNode, cartPos: CGPointFromArray(a: data[0]))
+	}
+	
 	override func update(_ currentTime: TimeInterval) {
 		nthFrameCount += 1
-		//objectsLayer.children[0].position.x += 0.1;
-		//objectsLayer.children[1].position.y += 0.1;
-		//objectsLayer.children[2].position.x += 0.05;
-		//objectsLayer.children[2].position.y -= 0.1;
+		updatePos();
 		if (nthFrameCount % nthFrame == 0) {
 			sortDepth()
 		}

@@ -1,10 +1,4 @@
-//
-//  TextureLoader.swift
-//  IsoGame
-//
-//  Created by John on 30/10/2017.
-//  Copyright © 2017 Big Sprite Games. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
@@ -12,8 +6,7 @@ import SpriteKit
 
 class TextureLoader {
 	
-	static func load(imgName:String, jsonName:String) -> [String: SKTexture]{
-		var textures = [String: SKTexture]()
+	static func load(imgName:String, jsonName:String, textures: inout [String: SKTexture]){
 		let imgPath = Bundle.main.path(forResource: imgName, ofType: "png")
 		let jsonPath = Bundle.main.path(forResource: jsonName, ofType: "json")
 		let sourceTexture = SKTexture(image: UIImage(contentsOfFile: imgPath!)!)
@@ -47,14 +40,12 @@ class TextureLoader {
 				wScaled = CGFloat(w/fullWidth!)
 				hScaled = CGFloat(h/fullHeight!)
 				texture = SKTexture(rect: CGRect(x: xScaled, y: yScaled, width: wScaled, height: hScaled), in: sourceTexture)
-				print(name, xScaled, yScaled, wScaled, hScaled)
 				textures[name] = texture
 			}
 		}
 		catch {
 			// handle error
 		}
-		return textures
 	}
 	
 }

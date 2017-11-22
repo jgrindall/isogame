@@ -1,14 +1,26 @@
 //
-//  TextureLoader.swift
+//  GameViewController.swift
 //  IsoGame
 //
-//  Created by John on 30/10/2017.
-//  Copyright © 2017 Big Sprite Games. All rights reserved.
+//  Created by Dave Longbottom on 16/01/2015.
+//  Copyright (c) 2015 Big Sprite Games. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import SpriteKit
+
+func CGPointFromArray (a:[CGFloat]) -> CGPoint{
+	return CGPoint(x: a[0], y: a[1])
+}
+
+func CGPointFromArray (a:[Int]) -> CGPoint{
+	return CGPoint(x: CGFloat(a[0]), y: CGFloat(a[1]))
+}
+
+func CGPointFromArray (a:[Float]) -> CGPoint{
+	return CGPoint(x: CGFloat(a[0]), y: CGFloat(a[1]))
+}
 
 func + (left: CGPoint, right: CGPoint) -> CGPoint {
 	return CGPoint(x: left.x + right.x, y: left.y + right.y)
@@ -48,36 +60,4 @@ func floor(_ point:CGPoint) -> CGPoint {
 
 func ceil(_ point:CGPoint) -> CGPoint {
 	return CGPoint(x: ceil(point.x), y: ceil(point.y))
-}
-
-class Projections {
-	
-	static private var _tileSize:CGFloat = 64.0
-	static private var _size:CGFloat = 6.0
-	
-	static func setup(tileSize:CGFloat, size:CGFloat){
-		_tileSize = tileSize
-		_size = size
-	}
-	static func cartToIso(p:CGPoint) -> CGPoint{
-		let xDir:CGPoint = CGPoint(x:_tileSize/2.0, y:_tileSize/4.0)
-		let yDir:CGPoint = CGPoint(x:-1.0*_tileSize/2.0, y:_tileSize/4.0)
-		let bottom:CGPoint = CGPoint(x:0, y: -1.0*CGFloat(_tileSize*_size)/4.0)
-		return bottom + p.x*xDir + p.y*yDir
-	}
-	static func isoToCart(p:CGPoint) -> CGPoint{
-		let alpha = _tileSize*_size / 4.0
-		return CGPoint(x:(p.x + 2.0*p.y + 2*alpha)/_tileSize, y:(p.x - 2.0*p.y - 2*alpha)/(-1.0*_tileSize))
-	}
-	static func sortDepth(nodes:[SKNode], min:Int){
-		func isInFront(n0:SKNode, n1:SKNode) -> Bool{
-			let p0 = Projections.isoToCart(p: n0.position)
-			let p1 = Projections.isoToCart(p: n1.position)
-			return (p0.x - p0.y < p1.x - p1.y);
-		}
-		let sortedNodes = nodes.sorted(by: isInFront)
-		for i in 0..<nodes.count {
-			(sortedNodes[i]).zPosition = CGFloat(min + 1 + i)
-		}
-	}
 }

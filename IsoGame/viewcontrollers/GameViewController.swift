@@ -1,10 +1,3 @@
-//
-//  GameViewController.swift
-//  IsoGame
-//
-//  Created by Dave Longbottom on 16/01/2015.
-//  Copyright (c) 2015 Big Sprite Games. All rights reserved.
-//
 
 import UIKit
 import SpriteKit
@@ -14,7 +7,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let scene = GameScene(size: view.bounds.size)
-        let skView = view as! SKView
+		self.view = SKView(frame: CGRect(origin: CGPoint(x:0,y:0), size: view.bounds.size))
+        let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
