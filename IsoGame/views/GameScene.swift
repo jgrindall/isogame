@@ -9,7 +9,6 @@ class GameScene: SKScene, PCodeConsumer  {
     }
 	
 	var textures : [String: SKTexture]
-	var codeRunner:PCodeRunner
 	var viewIso:SKSpriteNode
     var groundLayer:SKNode
     var objectsLayer:SKNode
@@ -17,6 +16,7 @@ class GameScene: SKScene, PCodeConsumer  {
     let nthFrame = 6
     var nthFrameCount = 0
 	var floorHeight:CGFloat = 0.25
+	var codeRunner:PCodeRunner
 	var SIZE = 6
 	var data:[[Float]] = [[0, 0, 1], [4, 4, 12]]
 	
@@ -25,7 +25,7 @@ class GameScene: SKScene, PCodeConsumer  {
 		viewIso = SKSpriteNode()
         groundLayer = SKNode()
         objectsLayer = SKNode()
-		codeRunner = CodeRunner(fileNames: ["Logo", "index"])
+		codeRunner = CodeRunner(fileName: "index")
 		super.init(size: size)
 	}
 	
@@ -38,16 +38,15 @@ class GameScene: SKScene, PCodeConsumer  {
 		Projections.setup(tileSize: CGFloat(TILESIZE), size: CGFloat(SIZE))
 		makeGround()
 		makeCharacters()
-		setupJS()
+		codeRunner.setConsumer(consumer: self).load();
     }
 	
-	func setupJS(){
-		codeRunner.setConsumer(consumer: self);
-		codeRunner.run(fnName: "check", arg: "a")
+	func ready(){
+		codeRunner.run(fnName: "run", arg: "\"fd 1\"")
 	}
 	
 	func consume(type: String, data: String) {
-		//?
+		print(type, data);
 	}
 	
 	func getPosForTile(cartPos:CGPoint) -> CGPoint{

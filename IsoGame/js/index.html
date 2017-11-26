@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		
+		<script src="Logo.js"></script>
+		
+		
+	</head>
+	
+	<body>
+		<script>
+			window.onerror = function(e){
+				console.log(e);
+			}
+		var STR =   "to test fd 1 end";
+		
+		STR +=      "to setup-rabbit rt 90 activate-daemon daemon-rabbit-eat end";
+		
+		STR +=      "to setup-robot set-var age 0 test end";
+		
+		STR +=      "to setup-rabbit rt 90 activate-daemon daemon-rabbit-eat end";
+		
+		STR +=      "to setup-robot set-var age 0 setxy 0 0 end";
+		
+		STR +=      "to setup-patch set-var age 0 activate-daemon daemon-patch-change end";
+		
+		STR +=      "to daemon-robot-walk fd 1 set-patch-var 9 end";
+		
+		STR +=      "to daemon-rabbit-eat rt 10 end";
+		
+		STR +=      "to daemon-patch-change set-var grass 5 end";
+		</script>
+		
+		<script>
+			iosBridge = {};
+
+			//consumer.callback('a');
+			//console.log(Logo);
+			//consumer.callback('b');
+			//consumer.callback(Logo);
+			//consumer.callback('c');
+			
+			//consumer.callback('d');
+			
+			var test = function(A){
+				console.log(A);
+				iosBridge.callback("123");
+			}
+			var run = function(logoString){
+				iosBridge.callback(1);
+				//var STR =   "to test fd 1 end";
+				
+				var targets = [
+					{"type":"robot", "pos":{"x":0, "y":0}, "angle":0},
+					{"type":"robot", "pos":{"x":0, "y":0}, "angle":0}
+				];
+				
+				var patches = [];
+				
+				var options = {
+					consume:function(cmd){
+						iosBridge.callback(cmd);
+						if(cmd.type === "command"){
+							console.log('cmd', cmd);
+						}
+						else if(cmd.type === "error"){
+							console.log("ERROR", cmd);
+						}
+					}
+				};
+				
+				iosBridge.callback(2);
+				
+				Logo.draw(STR, options, targets, patches)
+				.then(function(){
+					console.log('done');
+				})
+				.catch(function(){
+					console.log('error', arguments);
+				});
+				
+				iosBridge.callback(3);
+			}
+		</script>
+	</body>
+
+</html>
+

@@ -1,10 +1,3 @@
-//
-//  ImageUtils
-//  SceneKitTest
-//
-//  Created by John on 25/06/2016.
-//
-//
 
 import Foundation
 import SceneKit
@@ -13,8 +6,9 @@ import JavaScriptCore
 import UIKit
 
 protocol PCodeRunner {
-	init(fileNames:[String])
-	func setConsumer(consumer:PCodeConsumer)
+	init(fileName:String)
+	func setConsumer(consumer:PCodeConsumer) -> PCodeRunner
 	func run(fnName:String, arg:String)
+	func load()
 }
 
