@@ -7381,9 +7381,7 @@ module.exports = {
 	},
 	"draw":function(logo, consumer, targets, patches){
 		var tree = _getTree(logo);
-		 iosBridge.callback(5);
 		if(tree && consumer && targets && patches){
-		 iosBridge.callback(6);
 			return Visit.start(tree, consumer, targets, patches);
 		}
 		else{
@@ -14359,7 +14357,6 @@ function executeFunction(f){
 
 function visitNode(node){
 	var t = node.type;
-		  iosBridge.callback(t);
 	if(t=="start"){
 		return visitstart(node);
 	}
