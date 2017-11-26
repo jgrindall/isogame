@@ -6,9 +6,9 @@ import JavaScriptCore
 import UIKit
 
 protocol PCodeRunner {
-	init(fileName:String)
+	init()
 	func setConsumer(consumer:PCodeConsumer) -> PCodeRunner
 	func run(fnName:String, arg:String)
-	func load()
+	func load(fileName:String) -> PCodeRunner
 }
 
