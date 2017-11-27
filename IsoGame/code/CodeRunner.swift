@@ -54,8 +54,8 @@ class CodeRunner: NSObject, PCodeRunner, UIWebViewDelegate {
 	}
 	
 	public func run(fnName:String, arg:String) {
-		let s:String = fnName + "(" + arg + ")"
-		print("stringByEvaluatingJavaScript", s);
+		let s:String = fnName + "(\'" + arg + "\')"
+		print("stringByEvaluatingJavaScript", s)
 		self.webView.stringByEvaluatingJavaScript(from: s)
 	}
 }

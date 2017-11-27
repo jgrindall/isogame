@@ -1,36 +1,8 @@
 importScripts('Logo.js');
 
-var STR =   "to test fd 1 end";
-STR +=      "to setup-rabbit rt 90 activate-daemon daemon-rabbit-eat end";
-STR +=      "to setup-robot set-var age 0 activate-daemon daemon-robot-walk end";
-STR +=      "to setup-patch set-var age 0 activate-daemon daemon-patch-change end";
-STR +=      "to daemon-robot-walk fd 1 rt 1 set-patch-var 9 end";
-STR +=      "to daemon-rabbit-eat rt 10 end";
-STR +=      "to daemon-patch-change set-var grass 5 end";
-
-var targets = [
-	{
-		"type":"robot",
-		"pos":{
-			"x":0,
-			"y":0
-		},
-		"angle":0
-	},
-	{
-		"type":"robot",
-		"pos":{
-			"x":0,
-			"y":0
-		},
-		"angle":0
-	}
-];
-
-var patches = [];
-
 var options = {
 	consume:function(cmd){
+		
 		self.postMessage(JSON.stringify(cmd));
 	}
 };
@@ -43,9 +15,13 @@ var stop = function(){
 	
 };
 
-var run = function(logoString){
-	logoString = STR;
-	Logo.draw(logoString, options, targets, patches)
+var run = function(data){
+	self.postMessage("data" + data);
+	data = JSON.parse(data);
+	self.postMessage(1 + " : " + JSON.stringify(data.logo));
+	self.postMessage(2 + " : " + JSON.stringify(data.targets));
+	self.postMessage(3 + " : " + JSON.stringify(data.patches));
+	Logo.draw(data.logo, data.targets, data.patches, options)
 	.then(function(){
 		console.log('done');
 	})

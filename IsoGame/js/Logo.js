@@ -14357,6 +14357,7 @@ function executeFunction(f){
 
 function visitNode(node){
 	var t = node.type;
+		  self.postMessage("type - " + t);
 	if(t=="start"){
 		return visitstart(node);
 	}

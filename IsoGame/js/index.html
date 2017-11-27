@@ -11,8 +11,8 @@
 				iosBridge.callback(e.data);
 			}, false);
 			worker.addEventListener('error', function(e){
-				console.log('Worker error: ', e.data);
-				iosBridge.callback(e.data);
+				console.log('Worker error: ', e);
+				iosBridge.callback(e);
 			}, false);
 			window.onerror = function(e){
 				console.log(e);
