@@ -7379,7 +7379,7 @@ module.exports = {
 	"getTree":function(logo){
 		return _getTree(logo);
 	},
-	"draw":function(logo, consumer, targets, patches){
+	"draw":function(logo, targets, patches, consumer){
 		var tree = _getTree(logo);
 		if(tree && consumer && targets && patches){
 			return Visit.start(tree, consumer, targets, patches);
@@ -7391,7 +7391,7 @@ module.exports = {
 	"stop":function(){
 		Visit.stop();
 	},
-	"version":"11/20/2017, 9:23:25 PM"
+	"version":"11/30/2017, 8:15:59 PM"
 };
 
 },{"./Parser":5,"./Visit":10}],5:[function(require,module,exports){
@@ -14357,7 +14357,6 @@ function executeFunction(f){
 
 function visitNode(node){
 	var t = node.type;
-		  self.postMessage("type - " + t);
 	if(t=="start"){
 		return visitstart(node);
 	}

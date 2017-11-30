@@ -8,10 +8,10 @@ class Projections {
 	
 	static private var _tileSize:CGFloat = 64.0
 	static private var _size:CGFloat = 6.0
+	static private var floorHeight:CGFloat = 0.25
 	
-	static func setup(tileSize:CGFloat, size:CGFloat){
-		_tileSize = tileSize
-		_size = size
+	static func setup(){
+
 	}
 	static func cartToIso(p:CGPoint) -> CGPoint{
 		let xDir:CGPoint = CGPoint(x:_tileSize/2.0, y:_tileSize/4.0)
@@ -35,5 +35,17 @@ class Projections {
 		for i in 0..<nodes.count {
 			(sortedNodes[i]).zPosition = CGFloat(min + 1 + i)
 		}
+	}
+	static func getPosForTile(cartPos:CGPoint, w:Float, h:Float) -> CGPoint{
+		let tileSizeFloat = CGFloat(_tileSize);
+		let origin:CGPoint = CGPoint(x:w!/2, y:h!/2)
+		var iso:CGPoint = Projections.cartToIso(p:cartPos)
+		iso = iso + origin
+		iso = iso + CGPoint(x: -tileSizeFloat/2.0, y: -tileSizeFloat*floorHeight)
+		return iso
+	}
+	
+	static func posTile(tileSprite:SKSpriteNode, cartPos:CGPoint, w:Float, h:Float){
+		tileSprite.position = getPosForTile(cartPos: cartPos, w:w, h:h)
 	}
 }

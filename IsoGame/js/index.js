@@ -1,8 +1,7 @@
 importScripts('Logo.js');
 
-var options = {
+var consumer = {
 	consume:function(cmd){
-		
 		self.postMessage(JSON.stringify(cmd));
 	}
 };
@@ -21,7 +20,7 @@ var run = function(data){
 	self.postMessage(1 + " : " + JSON.stringify(data.logo));
 	self.postMessage(2 + " : " + JSON.stringify(data.targets));
 	self.postMessage(3 + " : " + JSON.stringify(data.patches));
-	Logo.draw(data.logo, data.targets, data.patches, options)
+	Logo.draw(data.logo, data.targets, data.patches, consumer)
 	.then(function(){
 		console.log('done');
 	})
