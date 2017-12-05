@@ -18,6 +18,7 @@
 		529C49AF1FD0A2A500D93847 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C49AE1FD0A2A500D93847 /* Character.swift */; };
 		529C49B11FD0A3D700D93847 /* SpriteFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C49B01FD0A3D700D93847 /* SpriteFactory.swift */; };
 		529C49B31FD7054B00D93847 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C49B21FD7054B00D93847 /* Logo.swift */; };
+		529C49B51FD7550D00D93847 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C49B41FD7550D00D93847 /* Animations.swift */; };
 		52BA5BA31FCADB5600E3411D /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 52BA5BA21FCADB5600E3411D /* index.js */; };
 		52F72C1C1FC60FB000F74C66 /* CodeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F72C191FC60FB000F74C66 /* CodeRunner.swift */; };
 		52F72C1D1FC60FB000F74C66 /* PCodeConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F72C1A1FC60FB000F74C66 /* PCodeConsumer.swift */; };
@@ -53,6 +54,7 @@
 		529C49AE1FD0A2A500D93847 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		529C49B01FD0A3D700D93847 /* SpriteFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteFactory.swift; sourceTree = "<group>"; };
 		529C49B21FD7054B00D93847 /* Logo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
+		529C49B41FD7550D00D93847 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		52BA5BA21FCADB5600E3411D /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		52F72C191FC60FB000F74C66 /* CodeRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeRunner.swift; sourceTree = "<group>"; };
 		52F72C1A1FC60FB000F74C66 /* PCodeConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCodeConsumer.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		529940B91FAE2D2400F197BC /* views */ = {
 			isa = PBXGroup;
 			children = (
+				529C49B41FD7550D00D93847 /* Animations.swift */,
 				529C49AE1FD0A2A500D93847 /* Character.swift */,
 				529940BA1FAE2D2400F197BC /* GameScene.swift */,
 			);
@@ -322,6 +325,7 @@
 				529940BD1FAE2D2400F197BC /* TextureLoader.swift in Sources */,
 				529C49AF1FD0A2A500D93847 /* Character.swift in Sources */,
 				529940BE1FAE2D2400F197BC /* GameViewController.swift in Sources */,
+				529C49B51FD7550D00D93847 /* Animations.swift in Sources */,
 				529940BF1FAE2D2400F197BC /* GameScene.swift in Sources */,
 				529940BC1FAE2D2400F197BC /* Projections.swift in Sources */,
 				52F72C1E1FC60FB000F74C66 /* PCodeRunner.swift in Sources */,
