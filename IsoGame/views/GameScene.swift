@@ -33,6 +33,7 @@ class GameScene: SKScene, PCodeConsumer  {
 		viewIso.position = CGPoint(x:0, y:0)
         viewIso.addChild(groundLayer)
         viewIso.addChild(objectsLayer)
+		Projections.setupSize(w:(self.view?.frame.width)!, h: (self.view?.frame.height)!)
         addChild(viewIso)
 		makeGround()
 		makeCharacters()
@@ -40,41 +41,7 @@ class GameScene: SKScene, PCodeConsumer  {
     }
 	
 	func ready(){
-		var STR =   "to test fd 1 end"
-		//STR +=      "to setup-rabbit rt 90 activate-daemon daemon-rabbit-eat end"
-		STR +=      "to setup-robot activate-daemon daemon-robot-walk end"
-		//STR +=      "to setup-patch set-var age 0 activate-daemon daemon-patch-change end"
-		STR +=      "to daemon-robot-walk fd 1 rt 1 end"
-		//STR +=      "to daemon-rabbit-eat rt 10 end"
-		//STR +=      "to daemon-patch-change set-var grass 5 end"
-		let target0:[String:Any] = [
-			"type":"robot",
-			"id":1,
-			"pos":[
-				"x":0,
-				"y":0
-			],
-			"angle":0
-		]
-		let target1:[String:Any] = [
-			"type":"robot",
-			"id":2,
-			"pos":[
-				"x":0,
-				"y":0
-			],
-			"angle":0
-		]
-		let targets:[[String:Any]] = [
-			target0,
-			target1
-		]
-		let patches:[[String:Any]] = Array()
-		let dictionary = [
-			"targets": targets,
-			"patches":patches,
-			"logo": STR
-		] as [String : Any]
+		let dictionary:[String : Any] = Logo.getInput()
 		if let theJSONData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) {
 			let theJSONText = String(data: theJSONData, encoding: .ascii)
 			codeRunner.run(fnName: "run", arg: theJSONText!)
@@ -100,7 +67,7 @@ class GameScene: SKScene, PCodeConsumer  {
 			tileSprite = SpriteFactory.getSprite(name: "out" + String(Int(a[2])) + ".png")
 			//posTile(tileSprite: tileSprite, cartPos: CGPointFromArray(a: a))
 			objectsLayer.addChild(tileSprite)
-			chars.append(Character(spriteNode: tileSprite))
+			chars.append(Character(spriteNode: tileSprite, x: 2, y: 2))
 		}
 	}
 	
@@ -123,13 +90,8 @@ class GameScene: SKScene, PCodeConsumer  {
 	func updatePos(currentTime:TimeInterval){
 		chars.forEach { (char) in
 			char.updatePos(currentTime:currentTime)
-			Projections.posTile(char.getSprite(), char.getCartPos())
-			
-			//tileSprite.position = getPosForTile(cartPos: cartPos)
-			
+			Projections.posChar(char: char)
 		}
-		//data[0][0] = data[0][0] + 0.0025
-		//posTile(tileSprite: objectsLayer.children[0] as! SKSpriteNode, cartPos: CGPointFromArray(a: data[0]))
 	}
 	
 	override func update(_ currentTime: TimeInterval) {

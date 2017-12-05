@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Foundation
+import UIKit
 
 extension String {
 	var parseJSONString: [String:Any]? {
@@ -18,5 +20,14 @@ extension String {
 		catch {
 		}
 		return nil
+	}
+}
+
+extension CGPoint{
+	public func clone() -> CGPoint {
+		return CGPoint(x: x, y: y)
+	}
+	public func towards(p:CGPoint, t:CGFloat) -> CGPoint{
+		return CGPoint(x: (1.0 - t)*x + t*p.x, y: (1.0 - t)*y + t*p.y)
 	}
 }
