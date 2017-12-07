@@ -13668,7 +13668,7 @@ Promise.resolveLater = function(){
 
 function resolveLater(resolve, reject, t){
 	if(typeof t === 'undefined'){
-		t = 0;
+		t = 500;
 	}
 	setTimeout(function(){
 		if(!_active){

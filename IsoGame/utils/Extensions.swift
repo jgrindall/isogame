@@ -31,3 +31,9 @@ extension CGPoint{
 		return CGPoint(x: (1.0 - t)*x + t*p.x, y: (1.0 - t)*y + t*p.y)
 	}
 }
+
+extension Float{
+	public func towards(p:Float, t:Float) -> Float{
+		return (1.0 - t)*self + t*p
+	}
+}

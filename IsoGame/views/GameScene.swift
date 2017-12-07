@@ -50,13 +50,9 @@ class GameScene: SKScene, PCodeConsumer  {
 	
 	func consume(jsonString: String) {
 		if let data:[String:Any] = jsonString.parseJSONString {
-			if(String(describing: data["type"]) == "command"){
-				if(String(describing:data["name"]) == "fd"){
-					chars[0].addAnimation(data: data)
-				}
-				else if(String(describing:data["name"]) == "rt"){
-					chars[0].addAnimation(data: data)
-				}
+			let type = data["type"] as? String
+			if type == "command"{
+				chars[0].addAnimation(data: data)
 			}
 		}
 	}
@@ -65,7 +61,6 @@ class GameScene: SKScene, PCodeConsumer  {
 		var tileSprite:SKSpriteNode
 		for a in data{
 			tileSprite = SpriteFactory.getSprite(name: "out" + String(Int(a[2])) + ".png")
-			//posTile(tileSprite: tileSprite, cartPos: CGPointFromArray(a: a))
 			objectsLayer.addChild(tileSprite)
 			chars.append(Character(spriteNode: tileSprite, x: 2, y: 2))
 		}
@@ -77,7 +72,7 @@ class GameScene: SKScene, PCodeConsumer  {
 			for i in stride(from: SIZE - 1, through: 0, by: -1) {
 				tileSprite = SKSpriteNode(imageNamed: "iso_ground.png")
 				tileSprite.anchorPoint = CGPoint(x:0, y:0)
-				//posTile(tileSprite: tileSprite, cartPos: CGPoint(x:CGFloat(i), y:CGFloat(j)))
+				Projections.posTile(tileSprite: tileSprite, cartPos: CGPoint(x:CGFloat(i), y:CGFloat(j)))
 				groundLayer.addChild(tileSprite)
 			}
 		}

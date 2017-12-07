@@ -2,20 +2,21 @@
 import UIKit
 import SpriteKit
 
+enum VendingMachineError: Error {
+	case invalidSelection
+}
+
 class Character  {
 	
-	private var _animations:[Animation]
+	private var _animations:Queue<Animation>
 	private var _spriteNode:SKSpriteNode
-	private var _currentAnimIndex:Int
+	private var _currentAnim:Animation?
 	private var _cartPos:CGPoint
 	private var _rot:Float
-	private let _TIME:TimeInterval = 5
-	private var _startTime:TimeInterval = 0
 	
 	init(spriteNode: SKSpriteNode, x:Float, y:Float) {
 		_spriteNode = spriteNode
-		_animations = Array()
-		_currentAnimIndex = -1
+		_animations = Queue<Animation>()
 		_cartPos = CGPoint(x: CGFloat(x), y: CGFloat(y))
 		_rot = 0.0
 	}
@@ -28,36 +29,69 @@ class Character  {
 		return _cartPos
 	}
 	
+	func getRot()->Float{
+		return _rot
+	}
+	
 	func setCartPos(p:CGPoint){
-		print(p)
 		_cartPos = p
 	}
 	
+	func setRot(r:Float){
+		_rot = r
+		while(_rot > 360.0){
+			_rot = _rot - 360.0
+		}
+		while(_rot < 0.0){
+			_rot = _rot + 360.0
+		}
+		updateTexture()
+	}
+	
+	private func updateTexture(){
+		var i:Int
+		if(_rot < 180.0){
+			i = 1
+		}
+		else{
+			i = 12
+		}
+		_spriteNode.texture = SpriteFactory.getTexture(name: "out" + String(i) + ".png")
+	}
+	
+	func setCurrent(anim:Animation, currentTime:TimeInterval){
+		_currentAnim = anim
+		_currentAnim?.setup(target: self, startTime:currentTime)
+	}
+	
 	func nextAnim(currentTime:TimeInterval){
-		_currentAnimIndex = _currentAnimIndex + 1
-		_startTime = currentTime
-		if let anim = getAnimation() {
-			anim.setTarget(target:self)
+		if(_animations.getLength() >= 2){
+			_ = _animations.dequeue() // this is the current one
+			setCurrent(anim:_animations.peek()!, currentTime:currentTime)
 		}
 	}
 	
 	func addAnimation(data:[String:Any]){
-		_animations.append(AnimationFactory.make(data:data))
+		_animations.enqueue(AnimationFactory.make(data:data))
 	}
 	
-	func getAnimation() -> Animation?{
-		if(_currentAnimIndex >= 0 && _currentAnimIndex < _animations.count){
-			return _animations[_currentAnimIndex]
+	func checkFinished(currentTime:TimeInterval){
+		if let anim = _currentAnim{
+			if(anim.isFinished(currentTime:currentTime)){
+				nextAnim(currentTime: currentTime)
+			}
 		}
-		return nil
 	}
 	
 	func updatePos(currentTime:TimeInterval){
-		if(currentTime >= _startTime + _TIME || _currentAnimIndex == -1){
-			nextAnim(currentTime: currentTime)
+		if (_currentAnim == nil && _animations.getLength() >= 1){
+			setCurrent(anim:_animations.peek()!, currentTime:currentTime)
 		}
-		if let anim = getAnimation() {
-			anim.updateTarget(t: Float((currentTime - _startTime)/_TIME))
+		else{
+			checkFinished(currentTime: currentTime)
+		}
+		if let anim = _currentAnim {
+			anim.updateTargetAtTime(currentTime:currentTime)
 		}
 	}
 	
