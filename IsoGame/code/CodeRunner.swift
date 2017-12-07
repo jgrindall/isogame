@@ -45,7 +45,8 @@ class CodeRunner: NSObject, PCodeRunner, UIWebViewDelegate {
 		}
 		ctx.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, to: AnyObject.self), forKeyedSubscript: "log" as NSCopying & NSObjectProtocol)
 		ctx.objectForKeyedSubscript("iosBridge").setObject(unsafeBitCast(iosCallbackFunction, to: AnyObject.self), forKeyedSubscript: "callback" as NSCopying & NSObjectProtocol)
-		self._consumer.ready();
+		//run(fnName: "setDelay", arg: "50")
+		self._consumer.ready()
 	}
 	
 	func setConsumer(consumer:PCodeConsumer) -> PCodeRunner{

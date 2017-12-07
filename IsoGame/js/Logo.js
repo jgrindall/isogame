@@ -7388,10 +7388,13 @@ module.exports = {
 			throw "wrong input";
 		}
 	},
+	"setDelay":function(d){
+		Visit.setDelay(d);
+	},
 	"stop":function(){
 		Visit.stop();
 	},
-	"version":"11/30/2017, 8:15:59 PM"
+	"version":"12/7/2017, 9:27:24 PM"
 };
 
 },{"./Parser":5,"./Visit":10}],5:[function(require,module,exports){
@@ -13657,7 +13660,7 @@ const Patch = 					require("./Patch");
 const _ = 						require("underscore");
 const Promise = 				require("bluebird");
 
-var stack, symTable, _active = false, _consumer, _target, _patches, _flattenedPatches;
+var stack, symTable, _active = false, _consumer, _target, _patches, _flattenedPatches, _delay = 0;
 
 Promise.resolveLater = function(){
 	if(!_active){
@@ -13668,7 +13671,7 @@ Promise.resolveLater = function(){
 
 function resolveLater(resolve, reject, t){
 	if(typeof t === 'undefined'){
-		t = 500;
+		t = _delay;
 	}
 	setTimeout(function(){
 		if(!_active){
@@ -14576,6 +14579,9 @@ module.exports = {
 			.then(setupTargets)
 			.then(setupPatches)
 			.then(runDaemons);
+	},
+	"setDelay":function(d){
+		_delay = d;
 	},
 	"stop":function(){
 		_active = false;
