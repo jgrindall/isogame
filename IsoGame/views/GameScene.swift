@@ -8,7 +8,7 @@ class GameScene: SKScene, PCodeConsumer  {
         fatalError("init(coder:) has not been implemented")
     }
 	
-	var chars : [Character]
+	var chars : [PCharacter]
 	var viewIso:SKSpriteNode
     var groundLayer:SKNode
     var objectsLayer:SKNode
@@ -84,7 +84,7 @@ class GameScene: SKScene, PCodeConsumer  {
 	
 	func updatePos(currentTime:TimeInterval){
 		chars.forEach { (char) in
-			char.updatePos(currentTime:currentTime)
+			char.updateAtTime(currentTime:currentTime)
 			Projections.posChar(char: char)
 		}
 	}

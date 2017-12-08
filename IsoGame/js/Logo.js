@@ -7394,7 +7394,7 @@ module.exports = {
 	"stop":function(){
 		Visit.stop();
 	},
-	"version":"12/7/2017, 9:27:24 PM"
+	"version":"12/8/2017, 10:32:34 PM"
 };
 
 },{"./Parser":5,"./Visit":10}],5:[function(require,module,exports){
@@ -13660,7 +13660,7 @@ const Patch = 					require("./Patch");
 const _ = 						require("underscore");
 const Promise = 				require("bluebird");
 
-var stack, symTable, _active = false, _consumer, _target, _patches, _flattenedPatches, _delay = 0;
+var stack, symTable, _active = false, _consumer, _target, _patches, _flattenedPatches, _delayMillisecs = 0;
 
 Promise.resolveLater = function(){
 	if(!_active){
@@ -13671,7 +13671,7 @@ Promise.resolveLater = function(){
 
 function resolveLater(resolve, reject, t){
 	if(typeof t === 'undefined'){
-		t = _delay;
+		t = _delayMillisecs;
 	}
 	setTimeout(function(){
 		if(!_active){
@@ -14581,7 +14581,7 @@ module.exports = {
 			.then(runDaemons);
 	},
 	"setDelay":function(d){
-		_delay = d;
+		_delayMillisecs = d;
 	},
 	"stop":function(){
 		_active = false;

@@ -4,13 +4,13 @@ import SpriteKit
 
 private let _TIME:TimeInterval = 0.333
 
-class Animation {
-	var _target: Character? = nil
+class Animation:PAnimation {
+	var _target: PCharacter? = nil
 	var _startTime:TimeInterval = 0
 	init(data:[String:Any]){
 		
 	}
-	func setup(target:Character, startTime:TimeInterval){
+	func setup(target:PCharacter, startTime:TimeInterval){
 		_target = target
 		_startTime = startTime
 	}
@@ -19,6 +19,9 @@ class Animation {
 	}
 	func isFinished(currentTime:TimeInterval) -> Bool{
 		return false
+	}
+	func start(){
+	
 	}
 }
 
@@ -32,7 +35,7 @@ class FdAnimation : Animation {
 		_completionTime = _TIME
 		super.init(data: data)
 	}
-	override func setup(target: Character, startTime:TimeInterval) {
+	override func setup(target: PCharacter, startTime:TimeInterval) {
 		super.setup(target: target, startTime:startTime)
 		_startPos = target.getCartPos().clone()
 		let d:Float = 0.5;
@@ -42,10 +45,14 @@ class FdAnimation : Animation {
 	}
 	override func updateTargetAtTime(currentTime:TimeInterval){
 		let t:CGFloat = CGFloat((currentTime - _startTime)/_completionTime)
+		print("fd", t)
 		_target?.setCartPos(p: _startPos.towards(p: _endPos, t: t))
 	}
 	override func isFinished(currentTime:TimeInterval) -> Bool{
 		return (currentTime - _startTime > _completionTime)
+	}
+	override func start(){
+		print("fd start")
 	}
 }
 
@@ -59,17 +66,21 @@ class RtAnimation : Animation {
 		_completionTime = _TIME
 		super.init(data: data)
 	}
-	override func setup(target: Character, startTime:TimeInterval) {
+	override func setup(target: PCharacter, startTime:TimeInterval) {
 		super.setup(target: target, startTime:startTime)
 		_startRot = target.getRot()
 		_endRot = target.getRot() + 20
 	}
 	override func updateTargetAtTime(currentTime:TimeInterval){
 		let t:CGFloat = CGFloat((currentTime - _startTime)/_completionTime)
+		print("rt", t)
 		_target?.setRot(r: _startRot.towards(p: _endRot, t: Float(t)))
 	}
 	override func isFinished(currentTime:TimeInterval) -> Bool{
 		return (currentTime - _startTime > _completionTime)
+	}
+	override func start(){
+		print("rt start")
 	}
 }
 
