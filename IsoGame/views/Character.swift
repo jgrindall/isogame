@@ -57,16 +57,22 @@ class Character : PCharacter {
 	private var _spriteNode:SKSpriteNode
 	private var _cartPos:CGPoint
 	private var _rot:Float
+	private var _id:Int
 	private var _characterAnimation:AnimationHandler! = nil
 	
-	init(spriteNode: SKSpriteNode, x:Float, y:Float) {
-		_spriteNode = spriteNode
+	init(id: Int, texture:Int, x:Float, y:Float, rot:Float) {
+		_spriteNode = SpriteFactory.getSprite(name: "out" + String(texture) + ".png")
 		_cartPos = CGPoint(x: CGFloat(x), y: CGFloat(y))
-		_rot = 0.0
+		_rot = rot
+		_id = id
 		_characterAnimation = AnimationHandler(char: self)
 	}
 	
-	func getSprite()->SKSpriteNode{
+	func getId()->Int{
+		return _id
+	}
+	
+	func getSpriteNode()->SKSpriteNode{
 		return _spriteNode
 	}
 	

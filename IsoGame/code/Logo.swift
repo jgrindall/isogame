@@ -37,11 +37,10 @@ class Logo {
 			target1
 		]
 		let patches:[[String:Any]] = Array()
-		let dictionary = [
+		return [
 			"targets": targets,
 			"patches":patches,
 			"logo": STR
 			] as [String : Any]
-		return dictionary
 	}
 }

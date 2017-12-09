@@ -45,7 +45,7 @@ class FdAnimation : Animation {
 	}
 	override func updateTargetAtTime(currentTime:TimeInterval){
 		let t:CGFloat = CGFloat((currentTime - _startTime)/_completionTime)
-		print("fd", t)
+		//print("fd", t)
 		_target?.setCartPos(p: _startPos.towards(p: _endPos, t: t))
 	}
 	override func isFinished(currentTime:TimeInterval) -> Bool{
@@ -73,7 +73,7 @@ class RtAnimation : Animation {
 	}
 	override func updateTargetAtTime(currentTime:TimeInterval){
 		let t:CGFloat = CGFloat((currentTime - _startTime)/_completionTime)
-		print("rt", t)
+		//print("rt", t)
 		_target?.setRot(r: _startRot.towards(p: _endRot, t: Float(t)))
 	}
 	override func isFinished(currentTime:TimeInterval) -> Bool{

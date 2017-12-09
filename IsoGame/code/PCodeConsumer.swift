@@ -7,7 +7,7 @@ import UIKit
 
 protocol PCodeConsumer : JSExport {
 
-	func consume(jsonString:String)
+	func consume(data:[String:Any])
 	func ready()
 
 }

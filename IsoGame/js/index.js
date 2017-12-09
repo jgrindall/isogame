@@ -11,16 +11,18 @@ self.addEventListener('message', function(e) {
 }, false);
 
 var stop = function(){
-	
+	Logo.stop();
 };
 
 var run = function(data){
 	data = JSON.parse(data);
 	Logo.draw(data.logo, data.targets, data.patches, consumer)
 	.then(function(){
+		consumer.consume({"type":"done", "msg":""});
 		console.log('done');
 	})
 	.catch(function(){
+		consumer.consume({"type":"error", "msg":""});
 		console.log('error', arguments);
 	});
 };

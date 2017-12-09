@@ -15,11 +15,12 @@ protocol PAnimation{
 }
 
 protocol PCharacter {
-	func getSprite()->SKSpriteNode
+	func getSpriteNode()->SKSpriteNode
 	func getCartPos()->CGPoint
 	func getRot()->Float
 	func setCartPos(p:CGPoint)
 	func setRot(r:Float)
 	func addAnimation(data:[String:Any])
 	func updateAtTime(currentTime:TimeInterval)
+	func getId() -> Int
 }

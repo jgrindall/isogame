@@ -23,6 +23,7 @@
 		52C04C631FDB4E4B00AA9479 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C04C621FDB4E4B00AA9479 /* Protocols.swift */; };
 		52C04C671FDB511400AA9479 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C04C651FDB511400AA9479 /* LinkedList.swift */; };
 		52C04C681FDB511400AA9479 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C04C661FDB511400AA9479 /* Queue.swift */; };
+		52C04C6A1FDB56FC00AA9479 /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C04C691FDB56FC00AA9479 /* CharacterList.swift */; };
 		52F72C1C1FC60FB000F74C66 /* CodeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F72C191FC60FB000F74C66 /* CodeRunner.swift */; };
 		52F72C1D1FC60FB000F74C66 /* PCodeConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F72C1A1FC60FB000F74C66 /* PCodeConsumer.swift */; };
 		52F72C1E1FC60FB000F74C66 /* PCodeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F72C1B1FC60FB000F74C66 /* PCodeRunner.swift */; };
@@ -62,6 +63,7 @@
 		52C04C621FDB4E4B00AA9479 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		52C04C651FDB511400AA9479 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		52C04C661FDB511400AA9479 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		52C04C691FDB56FC00AA9479 /* CharacterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		52F72C191FC60FB000F74C66 /* CodeRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeRunner.swift; sourceTree = "<group>"; };
 		52F72C1A1FC60FB000F74C66 /* PCodeConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCodeConsumer.swift; sourceTree = "<group>"; };
 		52F72C1B1FC60FB000F74C66 /* PCodeRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCodeRunner.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		529940B91FAE2D2400F197BC /* views */ = {
 			isa = PBXGroup;
 			children = (
+				52C04C691FDB56FC00AA9479 /* CharacterList.swift */,
 				529C49B41FD7550D00D93847 /* Animations.swift */,
 				529C49AE1FD0A2A500D93847 /* Character.swift */,
 				529940BA1FAE2D2400F197BC /* GameScene.swift */,
@@ -359,6 +362,7 @@
 				550ADBE21A68E68F007B858A /* AppDelegate.swift in Sources */,
 				52F72C1D1FC60FB000F74C66 /* PCodeConsumer.swift in Sources */,
 				529940BB1FAE2D2400F197BC /* Globals.swift in Sources */,
+				52C04C6A1FDB56FC00AA9479 /* CharacterList.swift in Sources */,
 				52C04C631FDB4E4B00AA9479 /* Protocols.swift in Sources */,
 				529940C11FAE457800F197BC /* Extensions.swift in Sources */,
 			);

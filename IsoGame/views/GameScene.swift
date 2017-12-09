@@ -8,20 +8,18 @@ class GameScene: SKScene, PCodeConsumer  {
         fatalError("init(coder:) has not been implemented")
     }
 	
-	var chars : [PCharacter]
+	var charList : CharacterList
 	var viewIso:SKSpriteNode
     var groundLayer:SKNode
     var objectsLayer:SKNode
     
     let nthFrame = 6
     var nthFrameCount = 0
-	var floorHeight:CGFloat = 0.25
 	var codeRunner:PCodeRunner
 	var SIZE = 6
-	var data:[[Float]] = [[2, 2, 1], [4, 4, 12]]
 	
     override init(size: CGSize) {
-		chars = [Character]()
+		charList = CharacterList()
 		viewIso = SKSpriteNode()
         groundLayer = SKNode()
         objectsLayer = SKNode()
@@ -45,24 +43,28 @@ class GameScene: SKScene, PCodeConsumer  {
 		if let theJSONData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) {
 			let theJSONText = String(data: theJSONData, encoding: .ascii)
 			codeRunner.run(fnName: "run", arg: theJSONText!)
-		}
-	}
-	
-	func consume(jsonString: String) {
-		if let data:[String:Any] = jsonString.parseJSONString {
-			let type = data["type"] as? String
-			if type == "command"{
-				chars[0].addAnimation(data: data)
+			let when = DispatchTime.now() + 5
+			DispatchQueue.main.asyncAfter(deadline: when) {
+				print("STOP")
+				self.codeRunner.run(fnName: "stop")
 			}
 		}
 	}
 	
+	func consume(data: [String:Any]) {
+		let type = data["type"] as? String
+		if type == "command"{
+			charList.consume(data:data)
+		}
+		else if(type == "error"){
+			
+		}
+	}
+	
 	func makeCharacters() {
-		var tileSprite:SKSpriteNode
-		for a in data{
-			tileSprite = SpriteFactory.getSprite(name: "out" + String(Int(a[2])) + ".png")
-			objectsLayer.addChild(tileSprite)
-			chars.append(Character(spriteNode: tileSprite, x: 2, y: 2))
+		charList.setup()
+		charList.getChars().forEach { (char) in
+			objectsLayer.addChild(char.getSpriteNode())
 		}
 	}
 	
@@ -83,10 +85,7 @@ class GameScene: SKScene, PCodeConsumer  {
 	}
 	
 	func updatePos(currentTime:TimeInterval){
-		chars.forEach { (char) in
-			char.updateAtTime(currentTime:currentTime)
-			Projections.posChar(char: char)
-		}
+		charList.updateAtTime(currentTime:currentTime)
 	}
 	
 	override func update(_ currentTime: TimeInterval) {

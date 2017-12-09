@@ -52,7 +52,7 @@ class Projections {
 	}
 	
 	static func posChar(char:PCharacter){
-		Projections.posTile(tileSprite: char.getSprite(), cartPos: char.getCartPos())
+		Projections.posTile(tileSprite: char.getSpriteNode(), cartPos: char.getCartPos())
 	}
 	
 	static func posTile(tileSprite:SKSpriteNode, cartPos:CGPoint){
