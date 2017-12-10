@@ -50,7 +50,7 @@ class CodeRunner: NSObject, PCodeRunner, UIWebViewDelegate {
 	func webViewDidFinishLoad(_ webView: UIWebView){
 		let ctx:JSContext = (self.webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext)!
 		let logFunction: @convention(block) (String) -> Void = { (msg: String) in
-			//print("console.log", msg)
+			print("console.log", msg)
 		}
 		let iosCallbackFunction: @convention(block) (String) -> Void = { (msg: String) in
 			self.consume(jsonString:msg)
