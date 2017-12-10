@@ -34,6 +34,7 @@
 		550ADBED1A68E690007B858A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550ADBEC1A68E690007B858A /* Images.xcassets */; };
 		550ADBFC1A68E690007B858A /* IsoGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBFB1A68E690007B858A /* IsoGameTests.swift */; };
 		55D12AD61A71D9D000A690E9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55D12AD51A71D9D000A690E9 /* sprites.atlas */; };
+		A1DBE66D4F5218A75CB49C04 /* Pods_IsoGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C787BC896A7BC08DF1113F1 /* Pods_IsoGame.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052D1127CE63E828ACAB4464 /* Pods-IsoGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IsoGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IsoGame/Pods-IsoGame.debug.xcconfig"; sourceTree = "<group>"; };
+		0C787BC896A7BC08DF1113F1 /* Pods_IsoGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IsoGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		522159531FDC8918000C91E5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		529940AA1FAE2B3F00F197BC /* max.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max.json; sourceTree = "<group>"; };
 		529940AE1FAE2BA100F197BC /* max.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = max.png; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		550ADBFA1A68E690007B858A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		550ADBFB1A68E690007B858A /* IsoGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsoGameTests.swift; sourceTree = "<group>"; };
 		55D12AD51A71D9D000A690E9 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		B6B77030888FCD1FA8903BA3 /* Pods-IsoGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IsoGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-IsoGame/Pods-IsoGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DBE66D4F5218A75CB49C04 /* Pods_IsoGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23A3FA9E00B45E9EAEA1EF1E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				052D1127CE63E828ACAB4464 /* Pods-IsoGame.debug.xcconfig */,
+				B6B77030888FCD1FA8903BA3 /* Pods-IsoGame.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		529940B21FAE2D2400F197BC /* globals */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +195,8 @@
 				550ADBDE1A68E68F007B858A /* IsoGame */,
 				550ADBF81A68E690007B858A /* IsoGameTests */,
 				550ADBDD1A68E68F007B858A /* Products */,
+				23A3FA9E00B45E9EAEA1EF1E /* Pods */,
+				FDB45F342D0AAB94C505F3A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +255,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FDB45F342D0AAB94C505F3A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C787BC896A7BC08DF1113F1 /* Pods_IsoGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +270,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 550ADBFF1A68E690007B858A /* Build configuration list for PBXNativeTarget "IsoGame" */;
 			buildPhases = (
+				895F36ADA7952C943CB78DA7 /* [CP] Check Pods Manifest.lock */,
 				550ADBD81A68E68F007B858A /* Sources */,
 				550ADBD91A68E68F007B858A /* Frameworks */,
 				550ADBDA1A68E68F007B858A /* Resources */,
+				B71ECA2D0448E8CE9AC449F0 /* [CP] Embed Pods Frameworks */,
+				0D4FA9E23B8786193BF84840 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -340,6 +367,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D4FA9E23B8786193BF84840 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IsoGame/Pods-IsoGame-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		895F36ADA7952C943CB78DA7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B71ECA2D0448E8CE9AC449F0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IsoGame/Pods-IsoGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		550ADBD81A68E68F007B858A /* Sources */ = {
@@ -474,6 +549,7 @@
 		};
 		550ADC001A68E690007B858A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 052D1127CE63E828ACAB4464 /* Pods-IsoGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -490,6 +566,7 @@
 		};
 		550ADC011A68E690007B858A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6B77030888FCD1FA8903BA3 /* Pods-IsoGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

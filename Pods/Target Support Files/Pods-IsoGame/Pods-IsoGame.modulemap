@@ -1,0 +1,6 @@
+framework module Pods_IsoGame {
+  umbrella header "Pods-IsoGame-umbrella.h"
+
+  export *
+  module * { export * }
+}

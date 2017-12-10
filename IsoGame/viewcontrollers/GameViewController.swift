@@ -7,6 +7,7 @@ class GameViewController: UIViewController, PCodeConsumer {
 	var skView:SKView? = nil
 	var scene:GameScene? = nil
 	var codeRunner:PCodeRunner
+	var _status:String = "stopped"
 	
 	init(){
 		codeRunner = CodeRunner()
@@ -30,6 +31,7 @@ class GameViewController: UIViewController, PCodeConsumer {
 	}
 	
 	func stop(){
+		_status = "stopping"
 		codeRunner.run(fnName: "stop")
 	}
 	
@@ -37,12 +39,13 @@ class GameViewController: UIViewController, PCodeConsumer {
 		let dictionary:[String : Any] = Logo.getInput()
 		if let theJSONData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) {
 			let theJSONText = String(data: theJSONData, encoding: .ascii)
+			_status = "running"
 			codeRunner.run(fnName: "run", arg: theJSONText!)
 		}
 	}
 	
 	func onError(){
-		// stopped
+		_status = "stopped"
 	}
 	
 	func consume(data: [String:Any]) {
