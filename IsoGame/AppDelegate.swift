@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  IsoGame
-//
-//  Created by Dave Longbottom on 16/01/2015.
-//  Copyright (c) 2015 Big Sprite Games. All rights reserved.
-//
 
 import UIKit
 
@@ -16,9 +9,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		window = UIWindow(frame: UIScreen.main.bounds)
+		print(UIScreen.main.bounds)
 		if let window = window {
 			window.backgroundColor = UIColor.white
-			window.rootViewController = GameViewController()
+			window.rootViewController = MainViewController()
+			window.rootViewController?.view.frame = window.frame
+			print(window.frame)
 			window.makeKeyAndVisible()
 		}
 		return true

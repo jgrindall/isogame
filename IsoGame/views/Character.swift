@@ -39,6 +39,7 @@ class AnimationHandler : PAnimationHandler{
 	}
 	
 	func addAnimation(anim:Animation){
+		print("ADD-------", anim)
 		_animationQueue.enqueue(anim)
 	}
 	

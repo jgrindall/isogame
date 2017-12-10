@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522159541FDC8918000C91E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522159531FDC8918000C91E5 /* MainViewController.swift */; };
 		529940AC1FAE2B3F00F197BC /* max.json in Resources */ = {isa = PBXBuildFile; fileRef = 529940AA1FAE2B3F00F197BC /* max.json */; };
 		529940AF1FAE2BA100F197BC /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 529940AE1FAE2BA100F197BC /* max.png */; };
 		529940BB1FAE2D2400F197BC /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529940B31FAE2D2400F197BC /* Globals.swift */; };
@@ -31,7 +32,6 @@
 		52F7C46C1FC7710900AD050E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 52F7C46B1FC7710900AD050E /* index.html */; };
 		550ADBE21A68E68F007B858A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBE11A68E68F007B858A /* AppDelegate.swift */; };
 		550ADBED1A68E690007B858A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550ADBEC1A68E690007B858A /* Images.xcassets */; };
-		550ADBF01A68E690007B858A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550ADBEE1A68E690007B858A /* LaunchScreen.xib */; };
 		550ADBFC1A68E690007B858A /* IsoGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550ADBFB1A68E690007B858A /* IsoGameTests.swift */; };
 		55D12AD61A71D9D000A690E9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55D12AD51A71D9D000A690E9 /* sprites.atlas */; };
 /* End PBXBuildFile section */
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		522159531FDC8918000C91E5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		529940AA1FAE2B3F00F197BC /* max.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max.json; sourceTree = "<group>"; };
 		529940AE1FAE2BA100F197BC /* max.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = max.png; sourceTree = "<group>"; };
 		529940B31FAE2D2400F197BC /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		550ADBE01A68E68F007B858A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		550ADBE11A68E68F007B858A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		550ADBEC1A68E690007B858A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		550ADBEF1A68E690007B858A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		550ADBF51A68E690007B858A /* IsoGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IsoGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		550ADBFA1A68E690007B858A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		550ADBFB1A68E690007B858A /* IsoGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsoGameTests.swift; sourceTree = "<group>"; };
@@ -120,6 +120,7 @@
 		529940B71FAE2D2400F197BC /* viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				522159531FDC8918000C91E5 /* MainViewController.swift */,
 				529940B81FAE2D2400F197BC /* GameViewController.swift */,
 			);
 			path = viewcontrollers;
@@ -205,7 +206,6 @@
 				550ADBE11A68E68F007B858A /* AppDelegate.swift */,
 				550ADBEC1A68E690007B858A /* Images.xcassets */,
 				55D12AD51A71D9D000A690E9 /* sprites.atlas */,
-				550ADBEE1A68E690007B858A /* LaunchScreen.xib */,
 				550ADBDF1A68E68F007B858A /* Supporting Files */,
 			);
 			path = IsoGame;
@@ -323,7 +323,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				529940AF1FAE2BA100F197BC /* max.png in Resources */,
-				550ADBF01A68E690007B858A /* LaunchScreen.xib in Resources */,
 				52F72C241FC61B8800F74C66 /* Logo.js in Resources */,
 				52BA5BA31FCADB5600E3411D /* index.js in Resources */,
 				550ADBED1A68E690007B858A /* Images.xcassets in Resources */,
@@ -352,6 +351,7 @@
 				529C49B31FD7054B00D93847 /* Logo.swift in Sources */,
 				52C04C681FDB511400AA9479 /* Queue.swift in Sources */,
 				529C49B11FD0A3D700D93847 /* SpriteFactory.swift in Sources */,
+				522159541FDC8918000C91E5 /* MainViewController.swift in Sources */,
 				529940BD1FAE2D2400F197BC /* TextureLoader.swift in Sources */,
 				529C49AF1FD0A2A500D93847 /* Character.swift in Sources */,
 				529940BE1FAE2D2400F197BC /* GameViewController.swift in Sources */,
@@ -385,17 +385,6 @@
 			targetProxy = 550ADBF61A68E690007B858A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		550ADBEE1A68E690007B858A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				550ADBEF1A68E690007B858A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		550ADBFD1A68E690007B858A /* Debug */ = {
@@ -487,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = WDBW628V64;
 				INFOPLIST_FILE = IsoGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -494,6 +484,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bigspritegames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -501,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = WDBW628V64;
 				INFOPLIST_FILE = IsoGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -508,6 +500,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bigspritegames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

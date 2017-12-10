@@ -28,6 +28,7 @@ class GameScene: SKScene, PCodeConsumer  {
 	}
 	
     override func didMove(to view: SKView) {
+		self.backgroundColor = .purple
 		viewIso.position = CGPoint(x:0, y:0)
         viewIso.addChild(groundLayer)
         viewIso.addChild(objectsLayer)
@@ -39,6 +40,10 @@ class GameScene: SKScene, PCodeConsumer  {
     }
 	
 	func ready(){
+		print("ready")
+	}
+	
+	func start(){
 		let dictionary:[String : Any] = Logo.getInput()
 		if let theJSONData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) {
 			let theJSONText = String(data: theJSONData, encoding: .ascii)
@@ -52,6 +57,7 @@ class GameScene: SKScene, PCodeConsumer  {
 	}
 	
 	func consume(data: [String:Any]) {
+		print("consume")
 		let type = data["type"] as? String
 		if type == "command"{
 			charList.consume(data:data)
