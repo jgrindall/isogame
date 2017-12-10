@@ -23,6 +23,13 @@
 				iosBridge.callback('start:' + logoString);
 				worker.postMessage(logoString);
 			};
+			var stop = function(){
+				worker.postMessage("stop");
+			};
+			var setDelayMS = function(){
+				worker.postMessage(logoString);
+			};
+		
 		</script>
 	</body>
 

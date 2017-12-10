@@ -7,7 +7,12 @@ var consumer = {
 };
 
 self.addEventListener('message', function(e) {
-    run(e.data);
+					  if(e.data === "stop"){
+						stop();
+					  }
+					  else{
+						run(e.data);
+					  }
 }, false);
 
 var stop = function(){
