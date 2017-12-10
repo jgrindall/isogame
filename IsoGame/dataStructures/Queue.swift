@@ -8,6 +8,11 @@ public struct Queue<T> {
 		return list.isEmpty
 	}
 	
+	public mutating func empty(){
+		count = 0
+		list = LinkedList<T>()
+	}
+	
 	public mutating func enqueue(_ element: T) {
 		list.append(value: element)
 		count = count + 1

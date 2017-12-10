@@ -6,7 +6,8 @@ class MainViewController: UIViewController {
 	
 	var gameViewController: GameViewController
 	var gameView:UIView?
-	var playStop:UIButton?
+	var playButton:UIButton?
+	var stopButton:UIButton?
 	
 	init(){
 		gameViewController = GameViewController()
@@ -25,15 +26,24 @@ class MainViewController: UIViewController {
     }
 	
 	func addUI(){
-		playStop = UIButton(type: UIButtonType.system)
-		playStop?.setTitle("play", for: UIControlState.normal)
-		playStop?.frame = CGRect(x: 50, y: 50, width: 200, height: 50)
-		playStop?.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
-		self.view.addSubview(playStop!)
+		playButton = UIButton(type: UIButtonType.system)
+		playButton?.setTitle("play", for: UIControlState.normal)
+		playButton?.frame = CGRect(x: 50, y: 50, width: 200, height: 50)
+		playButton?.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
+		self.view.addSubview(playButton!)
+		stopButton = UIButton(type: UIButtonType.system)
+		stopButton?.setTitle("stop", for: UIControlState.normal)
+		stopButton?.frame = CGRect(x: 150, y: 50, width: 200, height: 50)
+		stopButton?.addTarget(self, action: #selector(stopTapped), for: .touchUpInside)
+		self.view.addSubview(stopButton!)
 	}
 	
 	@objc func playTapped(sender: UIButton!) {
 		gameViewController.start()
+	}
+	
+	@objc func stopTapped(sender: UIButton!) {
+		gameViewController.stop()
 	}
 	
 	func addGame(){

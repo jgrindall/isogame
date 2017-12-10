@@ -2,7 +2,7 @@
 import UIKit
 import SpriteKit
 
-class GameScene: SKScene, PCodeConsumer  {
+class GameScene: SKScene  {
 	
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -12,10 +12,8 @@ class GameScene: SKScene, PCodeConsumer  {
 	var viewIso:SKSpriteNode
     var groundLayer:SKNode
     var objectsLayer:SKNode
-    
     let nthFrame = 6
     var nthFrameCount = 0
-	var codeRunner:PCodeRunner
 	var SIZE = 6
 	
     override init(size: CGSize) {
@@ -23,7 +21,6 @@ class GameScene: SKScene, PCodeConsumer  {
 		viewIso = SKSpriteNode()
         groundLayer = SKNode()
         objectsLayer = SKNode()
-		codeRunner = CodeRunner()
 		super.init(size: size)
 	}
 	
@@ -36,42 +33,17 @@ class GameScene: SKScene, PCodeConsumer  {
         addChild(viewIso)
 		makeGround()
 		makeCharacters()
-		_ = codeRunner.setConsumer(consumer: self).load(fileName: "index")
     }
-	
-	func ready(){
-		print("ready")
-	}
-	
-	func start(){
-		let dictionary:[String : Any] = Logo.getInput()
-		if let theJSONData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) {
-			let theJSONText = String(data: theJSONData, encoding: .ascii)
-			codeRunner.run(fnName: "run", arg: theJSONText!)
-			let when = DispatchTime.now() + 5
-			DispatchQueue.main.asyncAfter(deadline: when) {
-				print("STOP")
-				self.codeRunner.run(fnName: "stop")
-			}
-		}
-	}
-	
-	func consume(data: [String:Any]) {
-		print("consume")
-		let type = data["type"] as? String
-		if type == "command"{
-			charList.consume(data:data)
-		}
-		else if(type == "error"){
-			
-		}
-	}
 	
 	func makeCharacters() {
 		charList.setup()
 		charList.getChars().forEach { (char) in
 			objectsLayer.addChild(char.getSpriteNode())
 		}
+	}
+	
+	func consume(data:[String:Any]){
+		charList.consume(data: data)
 	}
 	
 	func makeGround() {

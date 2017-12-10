@@ -8,6 +8,7 @@ import UIKit
 protocol PCodeConsumer : JSExport {
 
 	func consume(data:[String:Any])
+	func onError()
 	func ready()
 
 }

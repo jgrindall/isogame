@@ -2,12 +2,14 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, PCodeConsumer {
 	
 	var skView:SKView? = nil
 	var scene:GameScene? = nil
+	var codeRunner:PCodeRunner
 	
 	init(){
+		codeRunner = CodeRunner()
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -23,8 +25,35 @@ class GameViewController: UIViewController {
 		super.loadView()
 	}
 	
+	func ready(){
+		print("ready")
+	}
+	
+	func stop(){
+		codeRunner.run(fnName: "stop")
+	}
+	
 	func start(){
-		scene?.start()
+		let dictionary:[String : Any] = Logo.getInput()
+		if let theJSONData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) {
+			let theJSONText = String(data: theJSONData, encoding: .ascii)
+			codeRunner.run(fnName: "run", arg: theJSONText!)
+		}
+	}
+	
+	func onError(){
+		// stopped
+	}
+	
+	func consume(data: [String:Any]) {
+		print("consume")
+		let type = data["type"] as? String
+		if type == "command"{
+			scene?.consume(data:data)
+		}
+		else if(type == "error"){
+			// mode change
+		}
 	}
 	
 	override func viewDidLoad() {
@@ -38,6 +67,7 @@ class GameViewController: UIViewController {
         scene?.scaleMode = .resizeFill
         skView?.presentScene(scene)
 		self.view.addSubview(skView!)
+		_ = codeRunner.setConsumer(consumer: self).load(fileName: "index")
     }
 	
 }

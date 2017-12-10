@@ -7,17 +7,13 @@ var consumer = {
 };
 
 self.addEventListener('message', function(e) {
-					  if(e.data === "stop"){
-						stop();
-					  }
-					  else{
-						run(e.data);
-					  }
-}, false);
-
-var stop = function(){
+  if(e.data === "stop"){
 	Logo.stop();
-};
+  }
+  else{
+	run(e.data);
+  }
+}, false);
 
 var run = function(data){
 	data = JSON.parse(data);

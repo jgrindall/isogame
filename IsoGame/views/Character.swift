@@ -11,6 +11,10 @@ class AnimationHandler : PAnimationHandler{
 		_animationQueue = Queue<Animation>()
 		_char = char
 	}
+	func drain(){
+		_currentAnim = nil
+		_animationQueue.empty()
+	}
 	func updateAtTime(currentTime:TimeInterval){
 		if (_currentAnim == nil && _animationQueue.getLength() >= 1){
 			_setCurrent(anim:_animationQueue.peek()!, currentTime:currentTime)
@@ -109,6 +113,10 @@ class Character : PCharacter {
 			i = 12
 		}
 		_spriteNode.texture = SpriteFactory.getTexture(name: "out" + String(i) + ".png")
+	}
+	
+	func drain(){
+		_characterAnimation.drain()
 	}
 	
 	func addAnimation(data:[String:Any]){

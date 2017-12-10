@@ -42,7 +42,7 @@ class CodeRunner: NSObject, PCodeRunner, UIWebViewDelegate {
 				self._consumer.consume(data: data)
 			}
 			else if(type == "error"){
-				print("ERROR")
+				self._consumer.onError()
 			}
 		}
 	}
